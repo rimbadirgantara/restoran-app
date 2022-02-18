@@ -138,63 +138,63 @@
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-1.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-2.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-3.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-4.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-5.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-6.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-7.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-8.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/g-9.jpg" alt="">
             <div class="content">
                 <h3>tasty food</h3>
-                <a href="#" class="btn">ordern now</a>
+                <a href="#" class="btn">pesan sekarang</a>
             </div>
         </div>
 
@@ -208,7 +208,7 @@
 
 <section class="review" id="review">
 
-    <h1 class="heading"> our customers <span>reviews</span> </h1>
+    <h1 class="heading"> customers <span>reviews</span> </h1>
 
     <div class="box-container">
 
@@ -222,7 +222,7 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione vel laboriosam? Est, maxime rem. Itaque.</p>
+            <p>Mantep gan!.</p>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/pic2.png" alt="">
@@ -234,7 +234,7 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione vel laboriosam? Est, maxime rem. Itaque.</p>
+            <p>Enak bet.</p>
         </div>
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/pic3.png" alt="">
@@ -246,7 +246,7 @@
                 <i class="fas fa-star"></i>
                 <i class="far fa-star"></i>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti delectus, ducimus facere quod ratione vel laboriosam? Est, maxime rem. Itaque.</p>
+            <p>Sodap, cuman kurang kamu aja, ASHIYAPPPP.</p>
         </div>
 
     </div>

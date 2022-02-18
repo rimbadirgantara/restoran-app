@@ -18,7 +18,7 @@
 
 <header>
 
-    <a href="#" class="logo"><i class="fas fa-utensils"></i>food</a>
+    <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $banner; ?></a>
 
     <div id="menu-bar" class="fas fa-bars"></div>
 
@@ -42,7 +42,7 @@
         <h3>ResRim</h3>
         <p>Kami dari pihak Restoran Rimba, menyajikan makanan yang kelihatan mahal tapi sebenarnya tidak mahal.<br>
         Silahkan login sebelum pesan makanan.</p>
-        <a href="#" class="btn">Login</a>
+        <a href="<?= base_url('/login'); ?>" class="btn">Login</a>
     </div>
 
     <div class="image">
@@ -61,7 +61,7 @@
 
 <!-- order section starts  -->
 
-<section class="order" id="order">
+<!-- <section class="order" id="order">
 
     <h1 class="heading"> <span>order</span> now </h1>
 
@@ -91,7 +91,7 @@
 
     </div>
 
-</section>
+</section> -->
 
 <!-- order section ends -->
 
