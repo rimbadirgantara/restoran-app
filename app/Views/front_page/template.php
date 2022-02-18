@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>complete responsive food website design tutorial </title>
+    <title><?= $title; ?></title>
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -24,9 +24,8 @@
 
     <nav class="navbar">
         <a href="#home">home</a>
-        <a href="#speciality">speciality</a>
-        <a href="#popular">popular</a>
-        <a href="#gallery">gallery</a>
+        <a href="#popular">Popular</a>
+        <a href="#menu">Menu</a>
         <a href="#review">review</a>
         <a href="#order">order</a>
     </nav>
@@ -40,9 +39,10 @@
 <section class="home" id="home">
 
     <div class="content">
-        <h3>food made with love</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas accusamus tempore temporibus rem amet laudantium animi optio voluptatum. Natus obcaecati unde porro nostrum ipsam itaque impedit incidunt rem quisquam eos!</p>
-        <a href="#" class="btn">order now</a>
+        <h3>ResRim</h3>
+        <p>Kami dari pihak Restoran Rimba, menyajikan makanan yang kelihatan mahal tapi sebenarnya tidak mahal.<br>
+        Silahkan login sebelum pesan makanan.</p>
+        <a href="#" class="btn">Login</a>
     </div>
 
     <div class="image">
@@ -114,10 +114,10 @@
 <!-- scroll top button  -->
 <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
 
-<!-- loader  -->
+<!-- loader 
 <div class="loader-container">
     <img src="<?= base_url(); ?>/assets/foodwebsite/images/loader.gif" alt="">
-</div>
+</div> -->
 
 <!-- custom js file link  -->
 <script src="<?= base_url(); ?>/assets/foodwebsite/script.js"></script>
