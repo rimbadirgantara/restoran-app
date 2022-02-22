@@ -33,9 +33,15 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Home::login');
+$routes->get('/lgt', 'Home::lgt');
 
 // routing pembeli
 $routes->get('/a', 'Pembeli::index');
+$routes->add('/a/tmbh_order', 'Pembeli::tambah_order');
+$routes->get('/a/(:segment)/proses', 'Pembeli::form_pesanan/$1');
+$routes->add('/a/(:segment)/proses_pesanan', 'Pembeli::proses_pesanan/$1');
+$routes->put('/a/(:segment)/proses_pesanan_v2', 'Pembeli::proses_pesanan_v2/$1');
+$routes->delete('/a/(:segment)/delete_order', 'Pembeli::hapus_order/$1');
 
 /*
  * --------------------------------------------------------------------
