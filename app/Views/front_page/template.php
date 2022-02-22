@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,56 +13,57 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/foodwebsite/style.css">
 
 </head>
+
 <body>
-    
-<!-- header section starts  -->
 
-<header>
+    <!-- header section starts  -->
 
-    <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $banner; ?></a>
+    <header>
 
-    <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="#" class="logo"><i class="fas fa-utensils"></i><?= $banner; ?></a>
 
-    <nav class="navbar">
-        <a href="#home">home</a>
-        <a href="#popular">Popular</a>
-        <a href="#menu">Menu</a>
-        <a href="#review">review</a>
-        <a href="#order">order</a>
-    </nav>
+        <div id="menu-bar" class="fas fa-bars"></div>
 
-</header>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#popular">Popular</a>
+            <a href="#menu">Menu</a>
+            <a href="#review">review</a>
+            <a href="#order">order</a>
+        </nav>
 
-<!-- header section ends -->
+    </header>
 
-<!-- home section starts  -->
+    <!-- header section ends -->
 
-<section class="home" id="home">
+    <!-- home section starts  -->
 
-    <div class="content">
-        <h3>ResRim</h3>
-        <p>Kami dari pihak Restoran Rimba, menyajikan makanan yang kelihatan mahal tapi sebenarnya tidak mahal.<br>
-        Silahkan login sebelum pesan makanan.</p>
-        <a href="<?= base_url('/login'); ?>" class="btn">Login</a>
-    </div>
+    <section class="home" id="home">
 
-    <div class="image">
-        <img src="<?= base_url(); ?>/assets/foodwebsite/images/home-img.png" alt="">
-    </div>
+        <div class="content">
+            <h3>ResRim</h3>
+            <p>Kami dari pihak Restoran Rimba, <br>menyajikan makanan yang kelihatan mahal <br>tapi sebenarnya tidak mahal.<br>
+                Silahkan login sebelum pesan makanan.</p>
+            <a href="<?= base_url('/login'); ?>" class="btn">Login</a>
+        </div>
 
-</section>
+        <div class="image">
+            <img src="<?= base_url(); ?>/assets/foodwebsite/images/home-img.png" alt="">
+        </div>
 
-<!-- home section ends -->
+    </section>
 
-<!-- speciality section starts  -->
+    <!-- home section ends -->
 
-<?= $this->renderSection('front_page_contennt'); ?>
+    <!-- speciality section starts  -->
 
-<!-- review section ends -->
+    <?= $this->renderSection('front_page_contennt'); ?>
 
-<!-- order section starts  -->
+    <!-- review section ends -->
 
-<!-- <section class="order" id="order">
+    <!-- order section starts  -->
+
+    <!-- <section class="order" id="order">
 
     <h1 class="heading"> <span>order</span> now </h1>
 
@@ -93,35 +95,36 @@
 
 </section> -->
 
-<!-- order section ends -->
+    <!-- order section ends -->
 
-<!-- footer section  -->
+    <!-- footer section  -->
 
-<section class="footer">
+    <section class="footer">
 
-    <div class="share">
-        <a href="#" class="btn">facebook</a>
-        <a href="#" class="btn">twitter</a>
-        <a href="#" class="btn">instagram</a>
-        <a href="#" class="btn">pinterest</a>
-        <a href="#" class="btn">linkedin</a>
-    </div>
+        <!-- <div class="share">
+            <a href="#" class="btn">facebook</a>
+            <a href="#" class="btn">twitter</a>
+            <a href="#" class="btn">instagram</a>
+            <a href="#" class="btn">pinterest</a>
+            <a href="#" class="btn">linkedin</a>
+        </div> -->
 
-    <h1 class="credit"> created by <span> mr. web designer </span> | all rights reserved! </h1>
+        <h1 class="credit"> created by <span> <a href="http://www.rimbadirgantara.github.io" style="color: orangered;">Rimba Dirgantara</a> </span> | all rights reserved! </h1>
 
-</section>
+    </section>
 
-<!-- scroll top button  -->
-<a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+    <!-- scroll top button  -->
+    <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
 
-<!-- loader 
+    <!-- loader 
 <div class="loader-container">
     <img src="<?= base_url(); ?>/assets/foodwebsite/images/loader.gif" alt="">
 </div> -->
 
-<!-- custom js file link  -->
-<script src="<?= base_url(); ?>/assets/foodwebsite/script.js"></script>
+    <!-- custom js file link  -->
+    <script src="<?= base_url(); ?>/assets/foodwebsite/script.js"></script>
 
 
 </body>
+
 </html>

@@ -119,7 +119,7 @@
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/step-4.jpg" alt="">
             <h3>dan akhirnya, nikmati makanan anda</h3>
         </div>
-    
+
     </section>
 
 </div>
@@ -214,7 +214,7 @@
 
         <div class="box">
             <img src="<?= base_url(); ?>/assets/foodwebsite/images/pic1.png" alt="">
-            <h3>john deo</h3>
+            <h3>Payoss Ananda</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
