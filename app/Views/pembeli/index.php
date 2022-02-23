@@ -57,7 +57,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="btn btn-danger mt-3 btn-mini"><i class="fas fa-trash"></i></button>
                               </form>
-                              <form action="<?= base_url('/a/' . $o['id'] . '/delete_order/') ?>" method="post" class="d-inline">
+                              <form action="<?= base_url('/a/' .  $o['id'] . '/' . $o['slug'] . '/' . '/edit_pesanan/') ?>" method="post" class="d-inline">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="PUT">
                                 <button type="submit" class="btn btn-warning mt-3 btn-mini"><i class="fas fa-pen"></i></button>
@@ -102,40 +102,84 @@
             </div>
           </div>
         </div>
-      <?php elseif ($order[0]['status'] === 'Tolong di proses') : ?>
+      <?php elseif ($order[0]['status'] === 'Belum bayar') : ?>
         <div class="row">
-          <div class="col-8">
-            <table class="table table-hover text-nowrap table-bordered">
-              <thead class="text-center">
-                <tr>
-                  <th style="width: 5px">No.</th>
-                  <th style="width: 10px">Menu</th>
-                  <th style="width: 5px">Porsi</th>
-                  <th style="width: 10px">Harga</th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <?php $i = 1;
-                foreach ($order as $o) : ?>
-                  <tr>
-                    <td><?= $i++; ?></td>
-                    <td><?= $o['nama_makanan']; ?></td>
-                    <td><?= $o['porsi']; ?></td>
-                    <td>Rp. <?= $o['total_harga']; ?>,-</td>
-                  </tr>
-                <?php endforeach; ?>
-                <tr>
-                  <td></td>
-                  <td>Total Semua</td>
-                  <td></td>
-                  <td>
-                    <?php foreach ($data_harga->getResult() as $row) : ?>
-                      Rp. <?= $row->total_harga; ?>,-
-                    <?php endforeach; ?>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>Bill</h6>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Menu</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Porsi</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No Meja</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $i = 1;
+                      foreach ($order as $o) : ?>
+                        <tr>
+                          <td>
+                            <div class="d-flex px-2 py-1">
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm"><?= $o['nama_makanan']; ?></h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0"><?= $o['porsi']; ?> Porsi</p>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0"><?= $o['no_meja']; ?></p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0">Rp. <?= $o['total_harga']; ?>,-</p>
+                          </td>
+                        </tr>
+
+                      <?php endforeach; ?>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <div class="text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Total Harga</h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <?php foreach ($data_harga->getResult() as $row) : ?>
+                            <p class="text-xs font-weight-bold mb-0"><b>Rp. <?= $row->total_harga; ?>,-</b></p>
+                          <?php endforeach; ?>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <div class="text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Status</h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <p class="text-xs font-weight-bold mb-0"><b><?= $order[0]['status']; ?></b></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="<?= base_url('/lgt'); ?>">Cetak Bill</a></h6>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row">
@@ -145,8 +189,8 @@
             <div class="widget-content">
               <div class="alert alert-block">
                 <h4 class="alert-heading">Informasi !</h4>
-                Terimakasih, Anda telah melakukan pemesanan.<br>
-                Silahkan tunggu pesanan tiba di meja saudara. Apabila selesai menyantap hidangan, silahkan lakukan proses pembayaran di kasir !
+                Terimakasih, Anda telah melakukan pemesanan.
+                Silahkan tunggu pesanan tiba di meja saudara. Apabila selesai menyantap hidangan, silahkan <b>lakukan proses pembayaran di kasir !</b>
               </div>
             </div>
           </div>

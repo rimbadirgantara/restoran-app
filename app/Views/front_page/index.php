@@ -213,7 +213,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="<?= base_url(); ?>/assets/foodwebsite/images/pic1.png" alt="">
+            <img src="<?= base_url(); ?>/assets/foodwebsite/images/payos.jpg" alt="">
             <h3>Payoss Ananda</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
@@ -225,8 +225,8 @@
             <p>Mantep gan!.</p>
         </div>
         <div class="box">
-            <img src="<?= base_url(); ?>/assets/foodwebsite/images/pic2.png" alt="">
-            <h3>john deo</h3>
+            <img src="<?= base_url(); ?>/assets/foodwebsite/images/kar.jpg" alt="">
+            <h3>Lena Karisma</h3>
             <div class="stars">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>

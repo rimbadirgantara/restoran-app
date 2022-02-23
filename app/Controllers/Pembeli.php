@@ -25,7 +25,8 @@ class Pembeli extends BaseController
 
 			'menu' => $this->MenuModel->findAll(),
 			'order' => $this->OrderModel->ambil_data_dengan_username(session()->get('username')),
-			'data_harga' => $this->OrderModel->jumlahkan_total_harga(session()->get('username'))
+			'data_harga' => $this->OrderModel->jumlahkan_total_harga(session()->get('username')),
+			'username' => htmlspecialchars(session()->get('username'))
 		];
 		return view('pembeli/index', $data);
 	}
@@ -41,6 +42,23 @@ class Pembeli extends BaseController
 		];
 		$this->OrderModel->save($data);
 		return redirect()->to(base_url('/a/#menu'));
+	}
+
+	public function edit_pesanan($id, $slug_makanan)
+	{
+		$data = [
+			'title' => 'ResRim | Pembeli',
+			'banner' => 'ResRim',
+			'page' => 'Home',
+			'sub_page' => 'Dashboard Pembeli',
+
+			'username' => session()->get('username'),
+			'makanan' => $this->MenuModel->ambil_data_dengan_slug($slug_makanan),
+			'_makanan' => $this->OrderModel->ambil_data_dengan_id($id),
+			'slug_makanan' => $slug_makanan,
+			'validation' => \Config\Services::validation()
+		];
+		return view('pembeli/edit_pesanan', $data);
 	}
 
 	public function hapus_order($id)
@@ -113,6 +131,48 @@ class Pembeli extends BaseController
 		];
 
 		$this->OrderModel->save($data_orderan);
+		return redirect()->to(base_url('/a'));
+	}
+
+	public function send_edit_pesanan($id, $slug_makanan)
+	{
+		$rules = [
+			'jumlah_porsi' => [
+				'rules' => 'required|numeric',
+				'errors' => [
+					'required' => 'Isi jumlah porsi!',
+					'numeric' => 'Jumlah harus angka!'
+				]
+			],
+
+			'no_meja' => [
+				'rules' => 'required|numeric',
+				'errors' => [
+					'required' => 'Isi nomor meja',
+					'numeric' => 'Jumlah harus angka!'
+				]
+			]
+		];
+
+		if (!$this->validate($rules)) {
+			$validation = \Config\Services::validation();
+			return redirect()->to(base_url('/a/' . $id . '/edit_pesanan'))->withInput()->with('validation', $validation);
+		}
+
+		$harga = $this->MenuModel->ambil_data_dengan_slug($slug_makanan);
+		$porsi = htmlspecialchars($this->request->getVar('jumlah_porsi'));
+		$no_meja = htmlspecialchars($this->request->getVar('no_meja'));
+		$total_harga = intval($porsi) * intVal($harga['harga']);
+
+		$data = [
+			'no_meja' => $no_meja,
+			'porsi' => $porsi,
+			'total_harga' => $total_harga
+		];
+
+		// dd($data);
+
+		$this->OrderModel->update($id, $data);
 		return redirect()->to(base_url('/a'));
 	}
 
