@@ -75,15 +75,13 @@ class Home extends BaseController
                             return redirect()->to(base_url('/a'));
                         } elseif ($cek_user['level'] === 'kasir') {
 
-                            // $data_ses = [
-                            //     'nama' => $cek_user['nama'],
-                            //     'username' => $cek_user['username'],
-                            //     'level' => $cek_user['level'],
-                            //     'nip' => $cek_user['nip']
-                            // ];
-                            // session()->set($data_ses);
-                            // return redirect()->to(base_url('/profiles/'.$data_ses['username'].'/dosen'));
-                            echo 'anda kasir';
+                            $data_ses = [
+                                'nama' => $cek_user['nama'],
+                                'username' => $cek_user['username'],
+                                'level' => $cek_user['level']
+                            ];
+                            session()->set($data_ses);
+                            return redirect()->to(base_url('/k'));
                         } elseif ($cek_user['level'] === 'admin') {
 
                             // $data_ses = [

@@ -9,7 +9,7 @@ class OrderModel extends Model
 
     protected $table = 'order';
     protected $useTimestamps = true;
-    protected $allowedFields = ['pemesan', 'nama_makanan', 'slug', 'no_meja', 'status', 'total_harga', 'porsi'];
+    protected $allowedFields = ['pemesan', 'nama_makanan', 'slug', 'no_meja', 'status', 'total_harga', 'porsi', 'waktu_dibuat'];
 
     public function ambil_data_dengan_username($username)
     {
@@ -25,6 +25,7 @@ class OrderModel extends Model
     {
         $db      = \Config\Database::connect();
         $builder = $db->table('order');
+        $builder->where('pemesan', $username);
         $sql = $builder->selectSum('total_harga');
         return $sql->get();
     }
@@ -48,5 +49,10 @@ class OrderModel extends Model
         $this->set('status', 'Belum bayar');
         $this->where('pemesan', $username);
         $this->update();
+    }
+
+    public function ambil_semua_data_belum_bayar()
+    {
+        return $this->where(['status' => 'Belum bayar'])->findAll();
     }
 }

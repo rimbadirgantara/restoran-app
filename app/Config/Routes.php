@@ -45,6 +45,9 @@ $routes->match(['get', 'post'], '/a/(:num)/(:segment)/sendeditpesanan', 'Pembeli
 $routes->put('/a/(:segment)/proses_pesanan_v2', 'Pembeli::proses_pesanan_v2/$1');
 $routes->delete('/a/(:segment)/delete_order', 'Pembeli::hapus_order/$1');
 
+// routing kasir
+$routes->get('/k', 'Kasir::index');
+
 
 $routes->get('/lgt', 'Home::lgt');
 

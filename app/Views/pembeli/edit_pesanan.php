@@ -1,4 +1,4 @@
-<?= $this->extend('pembeli/templates'); ?>
+<?= $this->extend('layouts/templates'); ?>
 
 <?= $this->section('all_content'); ?>
 

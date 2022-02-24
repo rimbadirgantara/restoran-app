@@ -1,4 +1,4 @@
-<?= $this->extend('pembeli/templates'); ?>
+<?= $this->extend('layouts/templates'); ?>
 
 <?= $this->section('all_content'); ?>
 
@@ -176,7 +176,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="<?= base_url('/lgt'); ?>">Cetak Bill</a></h6>
+                  <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="#">Cetak Bill</a></h6>
                 </div>
               </div>
             </div>
@@ -228,7 +228,7 @@
                   <div class="card-footer px-1 pb-0">
                     <div class="d-flex align-items-center justify-content-between">
                       <?php if ($order) : ?>
-                        <?php if ($order[0]['status'] === 'Tolong di proses') : ?>
+                        <?php if ($order[0]['status'] === 'Belum bayar') : ?>
                           <a class="btn btn-outline-primary btn-sm mb-0" onclick="alert('Pesanan anda sedang di proses')">Pesan</a>
                         <?php elseif ($order[0]['status'] === 'Belum di proses') : ?>
                           <a class="btn btn-outline-primary btn-sm mb-0" href="<?= base_url('/a/' . $m['slug'] . '/proses'); ?>">Pesan</a>

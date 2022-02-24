@@ -43,7 +43,8 @@
         <div class="content">
             <h3>ResRim</h3>
             <p>Kami dari pihak Restoran Rimba, <br>menyajikan makanan yang kelihatan mahal <br>tapi sebenarnya tidak mahal.<br>
-                Silahkan login sebelum pesan makanan.</p>
+                <b>Silahkan login sebelum pesan makanan.</b>
+            </p>
             <a href="<?= base_url('/login'); ?>" class="btn">Login</a>
         </div>
 

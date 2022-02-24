@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\MenuModel;
 use App\Models\OrderModel;
+use App\Models\KasirOrderModel;
 use CodeIgniter\HTTP\Request;
 use PhpParser\Node\Expr\FuncCall;
 
@@ -13,10 +14,22 @@ class Pembeli extends BaseController
 	{
 		$this->MenuModel = new MenuModel;
 		$this->OrderModel = new OrderModel;
+		$this->KasirOrderModel = new KasirOrderModel;
 	}
 
 	public function index()
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$data = [
 			'title' => 'ResRim | Pembeli',
 			'banner' => 'ResRim',
@@ -33,6 +46,17 @@ class Pembeli extends BaseController
 
 	public function tambah_order()
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$slug_makanan = htmlspecialchars($this->request->getVar('tambah_makanan'));
 		$nama_makanan = $this->MenuModel->ambil_data_dengan_slug($slug_makanan);
 		$data = [
@@ -46,6 +70,17 @@ class Pembeli extends BaseController
 
 	public function edit_pesanan($id, $slug_makanan)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$data = [
 			'title' => 'ResRim | Pembeli',
 			'banner' => 'ResRim',
@@ -63,12 +98,34 @@ class Pembeli extends BaseController
 
 	public function hapus_order($id)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$this->OrderModel->hapus_order($id);
 		return redirect()->to(base_url('/a'));
 	}
 
 	public function form_pesanan($slug)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$data = [
 			'title' => 'ResRim | Pembeli',
 			'banner' => 'ResRim',
@@ -89,6 +146,17 @@ class Pembeli extends BaseController
 
 	public function proses_pesanan($slug_makanan)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$rules = [
 			'jumlah_porsi' => [
 				'rules' => 'required|numeric',
@@ -127,7 +195,8 @@ class Pembeli extends BaseController
 			'no_meja' => htmlspecialchars($this->request->getVar('no_meja')),
 			'porsi' => $porsi,
 			'total_harga' => $total_semua,
-			'status' => 'Belum di proses'
+			'status' => 'Belum di proses',
+			'waktu_dibuat' => time()
 		];
 
 		$this->OrderModel->save($data_orderan);
@@ -136,6 +205,17 @@ class Pembeli extends BaseController
 
 	public function send_edit_pesanan($id, $slug_makanan)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
 		$rules = [
 			'jumlah_porsi' => [
 				'rules' => 'required|numeric',
@@ -178,6 +258,33 @@ class Pembeli extends BaseController
 
 	public function proses_pesanan_v2($username)
 	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+		// data untuk table kasir_order
+		$a = $this->OrderModel->ambil_data_dengan_username($username);
+		$total_harga = $this->OrderModel->jumlahkan_total_harga($username);
+		$total_harga = $total_harga->getResultArray();
+		// simpan data ke kasir order
+		$data = [
+			'pemesan' => $a[0]['pemesan'],
+			'no_meja' => $a[0]['no_meja'],
+			'total_bayar' => 0,
+			'total_harga' => $total_harga[0]['total_harga'],
+			'total_bayar' => 0,
+			'uang_kembalian' => 0,
+			'status' => 'Belum Bayar',
+			'waktu_dibuat' => time()
+		];
+
+		$this->KasirOrderModel->save($data);
 		$this->OrderModel->proses_pesanan($username);
 		return redirect()->to(base_url('/a'));
 	}
