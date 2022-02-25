@@ -15,6 +15,7 @@ class Pembeli extends BaseController
 		$this->MenuModel = new MenuModel;
 		$this->OrderModel = new OrderModel;
 		$this->KasirOrderModel = new KasirOrderModel;
+		$this->urlSegment = \Config\Services::request();
 	}
 
 	public function index()
@@ -39,6 +40,7 @@ class Pembeli extends BaseController
 			'menu' => $this->MenuModel->findAll(),
 			'order' => $this->OrderModel->ambil_data_dengan_username(session()->get('username')),
 			'data_harga' => $this->OrderModel->jumlahkan_total_harga(session()->get('username')),
+			'menuSegment' => $this->urlSegment->uri->getSegment(1),
 			'username' => htmlspecialchars(session()->get('username'))
 		];
 		return view('pembeli/index', $data);
@@ -91,6 +93,7 @@ class Pembeli extends BaseController
 			'makanan' => $this->MenuModel->ambil_data_dengan_slug($slug_makanan),
 			'_makanan' => $this->OrderModel->ambil_data_dengan_id($id),
 			'slug_makanan' => $slug_makanan,
+			'menuSegment' => $this->urlSegment->uri->getSegment(1),
 			'validation' => \Config\Services::validation()
 		];
 		return view('pembeli/edit_pesanan', $data);
@@ -135,6 +138,7 @@ class Pembeli extends BaseController
 			'menu' => $this->MenuModel->findAll(),
 			'order' => $this->OrderModel->ambil_data_dengan_username(session()->get('username')),
 			'makanan' => $this->MenuModel->ambil_data_dengan_slug(htmlspecialchars($slug)),
+			'menuSegment' => $this->urlSegment->uri->getSegment(1),
 			'validation' => \Config\Services::validation()
 		];
 		// dd($data['order']);

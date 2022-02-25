@@ -15,6 +15,7 @@ class Kasir extends BaseController
         $this->MenuModel = new MenuModel;
         $this->OrderModel = new OrderModel;
         $this->KasirOrderModel = new KasirOrderModel;
+        $this->urlSegment = \Config\Services::request();
     }
 
     public function index()
@@ -25,6 +26,7 @@ class Kasir extends BaseController
             'page' => 'Kasir',
             'sub_page' => 'Transaksi',
 
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
             'order' => $this->KasirOrderModel->where(['status' => 'Belum bayar'])->findAll(),
             'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll()
         ];
@@ -40,6 +42,7 @@ class Kasir extends BaseController
             'page' => 'Kasir',
             'sub_page' => 'Transaksi',
 
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
             'order' => $this->OrderModel->ambil_data_dengan_username($username),
             'data_harga' => $this->OrderModel->jumlahkan_total_harga($username),
             'validation' => \Config\Services::validation()
@@ -96,5 +99,20 @@ class Kasir extends BaseController
         $this->KasirOrderModel->update_data_pembeli($data);
         $this->OrderModel->hapus_data($data['pemesan']);
         return redirect()->to(base_url('/k/'));
+    }
+
+    public function tabeL_transaksi()
+    {
+        $data = [
+            'title' => 'ResRim | Kasir',
+            'banner' => 'ResRim',
+            'page' => 'Kasir',
+            'sub_page' => 'Transaksi',
+
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),
+            'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga(),
+        ];
+        return view('kasir/tbltrans', $data);
     }
 }

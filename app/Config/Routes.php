@@ -50,6 +50,7 @@ $routes->get('/k', 'Kasir::index');
 $routes->delete('/k/(:segment)/hapus-kasir-order/(:segment)', 'Kasir::hapus_data_karsir_order/$1/$2');
 $routes->get('/k/(:segment)/info-bill-pembeli', 'Kasir::info_bill_pembeli/$1');
 $routes->match(['get', 'post'], '/k/sendbayar/(:segment)/', 'Kasir::pembayaran_bill/$1');
+$routes->get('/ktbltransaksi', 'Kasir::tabeL_transaksi');
 
 $routes->get('/lgt', 'Home::lgt');
 

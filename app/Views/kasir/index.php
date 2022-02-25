@@ -89,6 +89,7 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Harga</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Waktu Memesan</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Waktu Bayar</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kasir</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>
                                         </tr>
                                     </thead>
@@ -121,6 +122,7 @@
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm"><?= date('H:i', $o['waktu_dibuat']); ?> WIB</h6>
+                                                            <small><?= date('d/n/Y', $o['waktu_dibuat']); ?></small>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -128,6 +130,14 @@
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm"><?= date('H:i', $o['waktu_bayar']); ?> WIB</h6>
+                                                            <small><?= date('d/n/Y', $o['waktu_bayar']); ?></small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm"><?= $o['kasir']; ?></h6>
                                                         </div>
                                                     </div>
                                                 </td>

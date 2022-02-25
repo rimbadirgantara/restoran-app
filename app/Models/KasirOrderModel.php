@@ -21,4 +21,13 @@ class KasirOrderModel extends Model
         $this->where('pemesan', $data['pemesan']);
         $this->update();
     }
+
+    public function jumlahkan_total_harga()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('kasir_order');
+        $builder->where(['status' => 'Sudah Bayar']);
+        $sql = $builder->selectSum('total_harga');
+        return $sql->get();
+    }
 }

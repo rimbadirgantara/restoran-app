@@ -5,18 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
-
-    <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <!-- custom css file link  -->
     <link rel="stylesheet" href="<?= base_url(); ?>/assets/foodwebsite/style.css">
+    <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/assets/foodwebsite/images/home-img.png" />
 
 </head>
 
 <body>
-
-    <!-- header section starts  -->
 
     <header>
 
@@ -34,9 +29,6 @@
 
     </header>
 
-    <!-- header section ends -->
-
-    <!-- home section starts  -->
 
     <section class="home" id="home">
 
@@ -53,10 +45,6 @@
         </div>
 
     </section>
-
-    <!-- home section ends -->
-
-    <!-- speciality section starts  -->
 
     <?= $this->renderSection('front_page_contennt'); ?>
 
@@ -117,10 +105,10 @@
     <!-- scroll top button  -->
     <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
 
-    <!-- loader 
-<div class="loader-container">
-    <img src="<?= base_url(); ?>/assets/foodwebsite/images/loader.gif" alt="">
-</div> -->
+    <!-- loader  -->
+    <div class="loader-container">
+        <img src="<?= base_url(); ?>/assets/foodwebsite/images/loader.gif" alt="">
+    </div>
 
     <!-- custom js file link  -->
     <script src="<?= base_url(); ?>/assets/foodwebsite/script.js"></script>
