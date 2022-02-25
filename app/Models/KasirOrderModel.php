@@ -30,4 +30,13 @@ class KasirOrderModel extends Model
         $sql = $builder->selectSum('total_harga');
         return $sql->get();
     }
+
+    public function jumlahkan_total_harga_dengan_username($username)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('kasir_order');
+        $builder->where(['pemesan' => $username]);
+        $sql = $builder->selectSum('total_harga');
+        return $sql->get();
+    }
 }

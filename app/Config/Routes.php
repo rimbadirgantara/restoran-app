@@ -44,6 +44,7 @@ $routes->put('/a/(:num)/(:segment)/edit_pesanan', 'Pembeli::edit_pesanan/$1/$2')
 $routes->match(['get', 'post'], '/a/(:num)/(:segment)/sendeditpesanan', 'Pembeli::send_edit_pesanan/$1/$2'); //kedua
 $routes->put('/a/(:segment)/proses_pesanan_v2', 'Pembeli::proses_pesanan_v2/$1');
 $routes->delete('/a/(:segment)/delete_order', 'Pembeli::hapus_order/$1');
+$routes->get('/at', 'Pembeli::tabel_transaksi');
 
 // routing kasir
 $routes->get('/k', 'Kasir::index');

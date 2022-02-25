@@ -107,7 +107,7 @@ class Kasir extends BaseController
             'title' => 'ResRim | Kasir',
             'banner' => 'ResRim',
             'page' => 'Kasir',
-            'sub_page' => 'Transaksi',
+            'sub_page' => 'Tabel Transaksi',
 
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
             'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),

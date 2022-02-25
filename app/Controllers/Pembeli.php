@@ -292,4 +292,32 @@ class Pembeli extends BaseController
 		$this->OrderModel->proses_pesanan($username);
 		return redirect()->to(base_url('/a'));
 	}
+
+	public function tabel_transaksi()
+	{
+		if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+			return redirect()->to(base_url('/login'));
+		} elseif (session()->get('level') === 'kasir') {
+			echo 'kasir di larang masuk';
+			die;
+		} elseif (session()->get('level') === 'adminis') {
+			echo 'owner di larang masuk';
+			die;
+		}
+
+		$data = [
+			'title' => 'ResRim | Pembeli',
+			'banner' => 'ResRim',
+			'page' => 'Home',
+			'sub_page' => 'Transaksi',
+
+			'menu' => $this->MenuModel->findAll(),
+			'order_sudah' => $this->KasirOrderModel->where(['pemesan' => session()->get('username')])->findAll(),
+			'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga_dengan_username(session()->get('username')),
+			'menuSegment' => $this->urlSegment->uri->getSegment(1),
+			'username' => htmlspecialchars(session()->get('username'))
+		];
+		return view('pembeli/tabel_transaksi', $data);
+	}
 }
