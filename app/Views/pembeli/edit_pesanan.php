@@ -55,7 +55,7 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div class="d-flex flex-column justify-content-center">
-                                                            <input type="text" name="no_meja" class="form-control <?= ($validation->hasError('no_meja')) ? 'is-invalid' : '' ?>" value="<?= $_makanan['no_meja']; ?>">
+                                                            <input type="text" name="no_meja" id="no_meja" class="form-control <?= ($validation->hasError('no_meja')) ? 'is-invalid' : '' ?>" value="<?= $_makanan['no_meja']; ?>">
                                                         </div>
                                                         <div class="invalid-feedback">
                                                             <?= $validation->getError('no_meja'); ?>

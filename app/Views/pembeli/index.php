@@ -195,6 +195,86 @@
             </div>
           </div>
         </div>
+      <?php elseif ($order[0]['status'] === 'Sudah Bayar') : ?>
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>Bill</h6>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Menu</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Porsi</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No Meja</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php $i = 1;
+                      foreach ($order as $o) : ?>
+                        <tr>
+                          <td>
+                            <div class="d-flex px-2 py-1">
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm"><?= $o['nama_makanan']; ?></h6>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0"><?= $o['porsi']; ?> Porsi</p>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0"><?= $o['no_meja']; ?></p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <p class="text-xs font-weight-bold mb-0">Rp. <?= $o['total_harga']; ?>,-</p>
+                          </td>
+                        </tr>
+
+                      <?php endforeach; ?>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <div class="text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Total Harga</h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <?php foreach ($data_harga->getResult() as $row) : ?>
+                            <p class="text-xs font-weight-bold mb-0"><b>Rp. <?= $row->total_harga; ?>,-</b></p>
+                          <?php endforeach; ?>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <div class="text-center">
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Status</h6>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <p class="text-xs font-weight-bold mb-0"><b><?= $order[0]['status']; ?></b></p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="#">Cetak Bill</a></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       <?php endif; ?>
     <?php endif; ?>
 
@@ -231,6 +311,8 @@
                         <?php if ($order[0]['status'] === 'Belum bayar') : ?>
                           <a class="btn btn-outline-primary btn-sm mb-0" onclick="alert('Pesanan anda sedang di proses')">Pesan</a>
                         <?php elseif ($order[0]['status'] === 'Belum di proses') : ?>
+                          <a class="btn btn-outline-primary btn-sm mb-0" href="<?= base_url('/a/' . $m['slug'] . '/proses'); ?>">Pesan</a>
+                        <?php elseif ($order[0]['status'] === 'Sudah Bayar') : ?>
                           <a class="btn btn-outline-primary btn-sm mb-0" href="<?= base_url('/a/' . $m['slug'] . '/proses'); ?>">Pesan</a>
                         <?php endif; ?>
                       <?php else : ?>

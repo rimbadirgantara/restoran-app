@@ -39,9 +39,31 @@ class OrderModel extends Model
         $this->update();
     }
 
+    public function update_data_pembeli_sudah_bayar($data)
+    {
+        $this->set('status', 'Sudah Bayar');
+        $this->where('pemesan', $data['pemesan']);
+        $this->update();
+    }
+
+    public function edit_status_order($username)
+    {
+        $this->set('status', 'Belum di proses');
+        $this->where('pemesan', $username);
+        $this->update();
+    }
+
     public function hapus_order($id)
     {
         $this->delete($id);
+    }
+
+    public function hapus_data($username)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('order');
+        $builder->where(['pemesan' => $username]);
+        $builder->delete();
     }
 
     public function proses_pesanan($username)

@@ -72,6 +72,9 @@ class Home extends BaseController
                                 'level' => $cek_user['level']
                             ];
                             session()->set($data_ses);
+                            // edit status akun menjadi online
+                            $stat = 'online';
+                            $this->LoginModel->edit_status_akun($username, $stat);
                             return redirect()->to(base_url('/a'));
                         } elseif ($cek_user['level'] === 'kasir') {
 
@@ -81,6 +84,9 @@ class Home extends BaseController
                                 'level' => $cek_user['level']
                             ];
                             session()->set($data_ses);
+                            // edit status akun menjadi online
+                            $stat = 'online';
+                            $this->LoginModel->edit_status_akun($username, $stat);
                             return redirect()->to(base_url('/k'));
                         } elseif ($cek_user['level'] === 'admin') {
 
@@ -117,7 +123,10 @@ class Home extends BaseController
 
     public function lgt()
     {
-        // berhasil
+        //// edit status akun menjadi offline
+        $stat = 'offline';
+        $username = session()->get('username');
+        $this->LoginModel->edit_status_akun($username, $stat);
         $data_ses = [
             'nama',
             'username',

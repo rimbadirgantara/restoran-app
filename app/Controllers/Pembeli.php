@@ -135,7 +135,7 @@ class Pembeli extends BaseController
 			'menu' => $this->MenuModel->findAll(),
 			'order' => $this->OrderModel->ambil_data_dengan_username(session()->get('username')),
 			'makanan' => $this->MenuModel->ambil_data_dengan_slug(htmlspecialchars($slug)),
-			'validation' => \Config\Services::validation(),
+			'validation' => \Config\Services::validation()
 		];
 		// dd($data['order']);
 		if (empty($data['makanan'])) {
