@@ -5,8 +5,8 @@ namespace App\Controllers;
 use App\Models\MenuModel;
 use App\Models\OrderModel;
 use App\Models\KasirOrderModel;
-use CodeIgniter\HTTP\Request;
-use PhpParser\Node\Expr\FuncCall;
+// dom pdf
+use \Dompdf\Dompdf;
 
 class Kasir extends BaseController
 {
@@ -54,6 +54,8 @@ class Kasir extends BaseController
     {
         $id = base64_decode($id);
         $username = base64_decode($username);
+        // update status di tabel order
+        $this->OrderModel->edit_status_order($username);
         // hapus data di tabel kasir order
         $this->KasirOrderModel->delete($id);
         return redirect()->to(base_url('/k'));
@@ -114,5 +116,20 @@ class Kasir extends BaseController
             'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga(),
         ];
         return view('kasir/tbltrans', $data);
+    }
+
+    public function exportPDF_transaksi()
+    {
+        // dompdf
+        $pdf = new Dompdf();
+        $data = [
+            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),
+            'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga(),
+        ];
+        $html = view('pdfhtml/transaksi', $data);
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->render();
+        $pdf->stream('laporan transaksi.pdf', array("Attachment" => 0));
     }
 }

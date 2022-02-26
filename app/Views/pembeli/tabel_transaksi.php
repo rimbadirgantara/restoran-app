@@ -71,25 +71,6 @@
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <div class="d-flex px-2 py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">Total :</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex px-2 py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <?php foreach ($total_pendapatan->getResult() as $t) : ?>
-                                                <h6 class="mb-0 text-sm">Rp. <?= $t->total_harga; ?>,-</h6>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

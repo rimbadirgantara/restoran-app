@@ -59,7 +59,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="">Cetak Bill</a></h6>
                 </div>
             </div>
         </div>

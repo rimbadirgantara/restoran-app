@@ -92,7 +92,9 @@
                             </tr>
                         </tbody>
                     </table>
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"><a href="">Cetak Bill</a></h6>
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
+                        <a class="btn btn-sm btn-block btn-info mt-3" href="<?= base_url('kasir/exportPDF_transaksi'); ?>" target="_blank">Export ke PDF</a>
+                    </h6>
                 </div>
             </div>
         </div>

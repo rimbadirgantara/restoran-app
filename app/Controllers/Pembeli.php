@@ -314,7 +314,6 @@ class Pembeli extends BaseController
 
 			'menu' => $this->MenuModel->findAll(),
 			'order_sudah' => $this->KasirOrderModel->where(['pemesan' => session()->get('username')])->findAll(),
-			'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga_dengan_username(session()->get('username')),
 			'menuSegment' => $this->urlSegment->uri->getSegment(1),
 			'username' => htmlspecialchars(session()->get('username'))
 		];
