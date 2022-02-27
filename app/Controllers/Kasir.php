@@ -20,6 +20,16 @@ class Kasir extends BaseController
 
     public function index()
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
         $data = [
             'title' => 'ResRim | Kasir',
             'banner' => 'ResRim',
@@ -27,14 +37,29 @@ class Kasir extends BaseController
             'sub_page' => 'Transaksi',
 
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
-            'order' => $this->KasirOrderModel->where(['status' => 'Belum bayar'])->findAll(),
-            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll()
+            // 'order' => $this->KasirOrderModel->where(['status' => 'Belum bayar'])->findAll(),
+            // 'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),
+
+            //pagination
+            'order' => $this->KasirOrderModel->where(['status' => 'Belum bayar'])->paginate(4, 'transkasi_belum_bayar'),
+            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->paginate(4, 'transkasi_sudah_bayar'),
+            'order_pager' => $this->KasirOrderModel->pager,
         ];
         return view('kasir/index', $data);
     }
 
     public function info_bill_pembeli($username)
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
         $username = base64_decode($username);
         $data = [
             'title' => 'ResRim | Kasir',
@@ -52,6 +77,16 @@ class Kasir extends BaseController
 
     public function hapus_data_karsir_order($id, $username)
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
         $id = base64_decode($id);
         $username = base64_decode($username);
         // update status di tabel order
@@ -63,6 +98,16 @@ class Kasir extends BaseController
 
     public function pembayaran_bill($username)
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
         $rules = [
             'nomimal_pembayaran' => [
                 'rules' => 'required|numeric',
@@ -105,6 +150,19 @@ class Kasir extends BaseController
 
     public function tabeL_transaksi()
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
+        // penghitung halaman untuk pagination
+        $current_page = $this->request->getVar('page_transpager') ? $this->request->getVar('page_transpager') : 1;
+
         $data = [
             'title' => 'ResRim | Kasir',
             'banner' => 'ResRim',
@@ -112,7 +170,9 @@ class Kasir extends BaseController
             'sub_page' => 'Tabel Transaksi',
 
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
-            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),
+            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->paginate(5, 'transpager'),
+            'transpager' => $this->KasirOrderModel->pager,
+            'current_page' => $current_page,
             'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga(),
         ];
         return view('kasir/tbltrans', $data);
@@ -120,6 +180,16 @@ class Kasir extends BaseController
 
     public function exportPDF_transaksi()
     {
+        if (!session()->get('nama') and !session()->get('username') and !session()->get('level')) {
+            session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
+            return redirect()->to(base_url('/login'));
+        } elseif (session()->get('level') === 'pembeli') {
+            return redirect()->to(base_url('/a'));
+        } elseif (session()->get('level') === 'adminis') {
+            echo 'owner di larang masuk';
+            die;
+        }
+
         // dompdf
         $pdf = new Dompdf();
         $data = [

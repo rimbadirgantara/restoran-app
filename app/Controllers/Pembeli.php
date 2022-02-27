@@ -24,8 +24,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -52,8 +51,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -76,8 +74,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -105,8 +102,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -122,8 +118,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -154,8 +149,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -213,8 +207,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -266,8 +259,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;
@@ -299,8 +291,7 @@ class Pembeli extends BaseController
 			session()->setFlashdata('login_dulu', 'Silahkan Login Terlebih Dahulu');
 			return redirect()->to(base_url('/login'));
 		} elseif (session()->get('level') === 'kasir') {
-			echo 'kasir di larang masuk';
-			die;
+			return redirect()->to(base_url('/k'));
 		} elseif (session()->get('level') === 'adminis') {
 			echo 'owner di larang masuk';
 			die;

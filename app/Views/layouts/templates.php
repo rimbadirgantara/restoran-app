@@ -190,7 +190,7 @@
                 document.write(new Date().getFullYear())
               </script>,
               made with <i class="fa fa-heart"></i> by
-              <a href="https://www.rimbadirgantara.github.io" class="font-weight-bold" target="_blank">Rimba Dirgantara</a>
+              <a href="https://rimbadirgantara.github.io/" class="font-weight-bold" target="_blank">Rimba Dirgantara</a>
               for a better web.
             </div>
           </div>

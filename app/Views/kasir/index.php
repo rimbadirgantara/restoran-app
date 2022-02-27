@@ -60,6 +60,8 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <?= $order_pager->links('transkasi_belum_bayar', 'order_pager'); // grup, dan pagination views 
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -152,6 +154,7 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
+                                <?= $order_pager->links('transkasi_sudah_bayar', 'order_pager'); ?>
                             </div>
                         </div>
                     </div>

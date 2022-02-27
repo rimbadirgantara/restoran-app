@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1;
+                            <?php $i = 1 + (5 * ($current_page - 1));
                             foreach ($order_sudah as $o) : ?>
                                 <tr>
                                     <td>
@@ -92,8 +92,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <?= $transpager->links('transpager', 'order_pager'); ?>
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">
-                        <a class="btn btn-sm btn-block btn-info mt-3" href="<?= base_url('kasir/exportPDF_transaksi'); ?>" target="_blank">Export ke PDF</a>
+                        <a class="btn btn-sm btn-block btn-info mt-1" href="<?= base_url('kasir/exportPDF_transaksi'); ?>" target="_blank">Export ke PDF</a>
                     </h6>
                 </div>
             </div>
