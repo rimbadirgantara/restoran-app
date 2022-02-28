@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>/assets/assets_login/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url(); ?>/assets/assets_login/dist/css/adminlte.min.css">
-  <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/assets/assets_login/dist/img/polbeng_.png"/>
+  <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/assets/assets_login/dist/img/polbeng_.png" />
 </head>
 
 <?= $this->renderSection('konten_login'); ?>
@@ -26,4 +27,5 @@
 <!-- my js -->
 <script src="<?= base_url(); ?>/assets/assets_login/dist/latihan/dist/myscript.js"></script>
 </body>
+
 </html>

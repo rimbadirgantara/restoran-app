@@ -34,4 +34,45 @@ class Admin extends BaseController
         ];
         return view('admin/index', $data);
     }
+
+    public function member()
+    {
+        $current_page = $this->request->getVar('page_pembeli') ? $this->request->getVar('page_pembeli') : 1;
+        $data = [
+            'title' => 'Resrim | Admin',
+            'sidebar_banner' => 'Resrim App',
+            'page_name' => 'Member',
+            'sub_page' => 'index',
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+
+            'current_page' => $current_page,
+            'pembeli' => $this->UserModel->where(['level' => 'pembeli'])->paginate(5, 'pembeli'),
+            'pembeli_pager' => $this->UserModel->pager,
+        ];
+        return view('admin/member/index', $data);
+    }
+
+    public function hapus_member($id)
+    {
+        $id = base64_decode($id);
+        $this->UserModel->delete($id);
+        session()->setFlashdata('berhasil_hapus_user', 'Berhasil Menghapus User');
+        return redirect()->to(base_url('/member'));
+    }
+
+    public function edit_member($id)
+    {
+        $id = base64_decode($id);
+        $data = [
+            'title' => 'Resrim | Admin',
+            'sidebar_banner' => 'Resrim App',
+            'page_name' => 'Member',
+            'sub_page' => 'Info Pembeli',
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+
+            'pembeli' => $this->UserModel->where(['id' => $id])->first()
+        ];
+
+        return view('admin/member/form_edit_user', $data);
+    }
 }

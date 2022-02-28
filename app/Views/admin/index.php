@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3 col-sm-6 col-12">
-                <a href="#" style="color: black;" title="Jumlah Member">
+                <a href="<?= base_url('/member'); ?>" style="color: black;" title="Jumlah Member">
                     <div class="info-box shadow">
                         <span class="info-box-icon bg-success"><i class="fas fa-users"></i></span>
 

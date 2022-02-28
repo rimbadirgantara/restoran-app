@@ -55,6 +55,9 @@ $routes->get('/ktbltransaksi', 'Kasir::tabeL_transaksi');
 
 // routing admin
 $routes->get('/owner', 'Admin::index');
+$routes->get('/member', 'Admin::member');
+$routes->delete('/member/(:segment)/delete', 'Admin::hapus_member/$1');
+$routes->get('/member/(:segment)/edit', 'Admin::edit_member/$1');
 
 $routes->get('/lgt', 'Home::lgt');
 

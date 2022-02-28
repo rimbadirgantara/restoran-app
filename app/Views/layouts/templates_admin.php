@@ -18,9 +18,9 @@
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
-        <div class="preloader flex-column justify-content-center align-items-center">
+        <!-- <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__shake" src="<?= base_url(); ?>/assets/admin/dist/img/AdminLTELogo.png" height="60" width="60">
-        </div>
+        </div> -->
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <ul class="navbar-nav">
@@ -113,6 +113,9 @@
                                     </a>
                         </li>
                         <li class="nav-header">Navigasi Halaman Depan</li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('/lgt'); ?>"><i class="nav-icon fa fa-sign-out"></i>Sign Out</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -165,6 +168,10 @@
         <script src="<?= base_url(); ?>/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="<?= base_url(); ?>/assets/admin/dist/js/adminlte.min.js"></script>
+        <!-- Sweet alert -->
+        <script src="<?= base_url(); ?>/assets/admin/dist/latihan/dist/sweetalert2.all.min.js"></script>
+        <!-- my js -->
+        <script src="<?= base_url(); ?>/assets/admin/dist/latihan/dist/myscript.js"></script>
 </body>
 
 </html>
