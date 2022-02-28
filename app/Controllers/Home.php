@@ -90,15 +90,16 @@ class Home extends BaseController
                             return redirect()->to(base_url('/k'));
                         } elseif ($cek_user['level'] === 'admin') {
 
-                            // $data_ses = [
-                            //     'nama' => $cek_user['nama'],
-                            //     'username' => $cek_user['username'],
-                            //     'level' => $cek_user['level'],
-                            //     'no_laboran' => $cek_user['no_laboran']
-                            // ];
-                            // session()->set($data_ses);
-                            // return redirect()->to(base_url('/lab/'.$cek_user['lab'].'/detail/labor'));
-                            echo 'anda admin';
+                            $data_ses = [
+                                'nama' => $cek_user['nama'],
+                                'username' => $cek_user['username'],
+                                'level' => $cek_user['level']
+                            ];
+                            session()->set($data_ses);
+                            // edit status akun menjadi online
+                            $stat = 'online';
+                            $this->LoginModel->edit_status_akun($username, $stat);
+                            return redirect()->to(base_url('/owner'));
                         } else {
                             session()->setFlashdata('login_dulu', 'Anda tidak di kenali');
                             return redirect()->to(base_url('/login'));

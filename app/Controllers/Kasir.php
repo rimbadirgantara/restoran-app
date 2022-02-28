@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\MenuModel;
 use App\Models\OrderModel;
 use App\Models\KasirOrderModel;
-// dom pdf
 use \Dompdf\Dompdf;
 
 class Kasir extends BaseController

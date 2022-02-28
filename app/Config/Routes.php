@@ -53,6 +53,9 @@ $routes->get('/k/(:segment)/info-bill-pembeli', 'Kasir::info_bill_pembeli/$1');
 $routes->match(['get', 'post'], '/k/sendbayar/(:segment)/', 'Kasir::pembayaran_bill/$1');
 $routes->get('/ktbltransaksi', 'Kasir::tabeL_transaksi');
 
+// routing admin
+$routes->get('/owner', 'Admin::index');
+
 $routes->get('/lgt', 'Home::lgt');
 
 /*
