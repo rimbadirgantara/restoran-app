@@ -1,217 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<?= $this->extend('layouts/templates_admin'); ?>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Starter</title>
+<?= $this->section('all_content'); ?>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/admin/plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?= base_url(); ?>/assets/admin/dist/css/adminlte.min.css">
-    <link rel="shortcut icon" type="image/png" href="<?= base_url(); ?>/assets/foodwebsite/images/home-img.png" />
-</head>
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="#" style="color: black;" title="Jumlah Member">
+                    <div class="info-box shadow">
+                        <span class="info-box-icon bg-success"><i class="fas fa-users"></i></span>
 
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <!-- Preloader -->
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="<?= base_url(); ?>/assets/admin/dist/img/AdminLTELogo.png" height="60" width="60">
-        </div>
-
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?= base_url(); ?>/assets/foodwebsite/images/home-img.png" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user panel (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="<?= base_url(); ?>/assets/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Starter Pages
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Simple Link
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Starter Page</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Starter Page</li>
-                            </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
-
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's
-                                        content.
-                                    </p>
-
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-
-                                    <p class="card-text">
-                                        Some quick example text to build on the card title and make up the bulk of the card's
-                                        content.
-                                    </p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
-                            </div><!-- /.card -->
+                        <div class="info-box-content">
+                            <span class="info-box-text">Member</span>
+                            <span class="info-box-number"><?= $jumlah_semua; ?> Orang</span>
                         </div>
-                        <!-- /.col-md-6 -->
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
-
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="m-0">Featured</h5>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title">Special title treatment</h6>
-
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.col-md-6 -->
                     </div>
-                    <!-- /.row -->
-                </div><!-- /.container-fluid -->
+                </a>
             </div>
-            <!-- /.content -->
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="#" style="color: black;" title="Jumlah Order">
+                    <div class="info-box shadow">
+                        <span class="info-box-icon bg-warning"><i class="fa fa-tasks"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Order</span>
+                            <span class="info-box-number"><?= $jumlah_order; ?> Order</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="#" style="color: black;" title="Total Profit">
+                    <div class="info-box shadow">
+                        <span class="info-box-icon bg-info"><i class="fas fa-shopping-cart"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Profit</span>
+                            <?php foreach ($profit as $profit) : ?>
+                                <span class="info-box-number">Rp. <?= $profit['total_harga']; ?>.-</span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="#" style="color: black;" title="Jumlah Menu">
+                    <div class="info-box shadow">
+                        <span class="info-box-icon bg-warning"><i class="far fa-calendar-alt"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Menu</span>
+                            <span class="info-box-number"><?= $jumlah_menu; ?> Menu</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Template by AdminLTE
-            </div>
-            <!-- Default to the left -->
-            <strong>&copy; <?= date('Y', time()); ?> made with <i class="fa fa-heart"></i> by <a href="https://rimbadirgantara.github.io">Rimba Dirgantara</a></strong>
-        </footer>
-    </div>
-    <!-- ./wrapper -->
-
-    <!-- REQUIRED SCRIPTS -->
-
-    <!-- jQuery -->
-    <script src="<?= base_url(); ?>/assets/admin/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?= base_url(); ?>/assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="<?= base_url(); ?>/assets/admin/dist/js/adminlte.min.js"></script>
-</body>
-
-</html>
+        <!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?= $this->endSection(); ?>
