@@ -5,6 +5,8 @@
 <!-- Main content -->
 <div class="content">
     <div class="berhasil-hapus-user" data-flashdata="<?= session()->getFlashdata('berhasil_hapus_user'); ?>"></div>
+    <div class="berhasil-update-user" data-flashdata="<?= session()->getFlashdata('edit_berhasil'); ?>"></div>
+    <div class="berhasil-tambah-user" data-flashdata="<?= session()->getFlashdata('berhasil_tambah_user'); ?>"></div>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -12,13 +14,15 @@
                     <h3 class="card-title">List Pembeli</h3>
 
                     <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <div class="input-group input-group-sm" style="width: 200px;">
 
                             <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                                <form action="" method="post">
+                                    <input type="text" name="keyword" class="form-control float-right ml-2" style="width: 151px;" placeholder="Search">
+                                    <button type="submit" name="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
