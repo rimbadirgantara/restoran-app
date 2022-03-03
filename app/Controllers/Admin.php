@@ -40,10 +40,11 @@ class Admin extends BaseController
     {
         $keyword = htmlspecialchars($this->request->getVar('keyword'));
         if ($keyword) {
-            $pembeli = $this->UserModel->search_pembeli($keyword)->findAll();
+            $pembeli = $this->UserModel->search_pembeli($keyword)->paginate(5, 'pembeli');
         } else {
-            $pembeli = $this->UserModel->where(['level' => 'pembeli'])->findAll();
+            $pembeli = $this->UserModel->where(['level' => 'pembeli'])->paginate(5, 'pembeli');
         }
+        $current_page_pembeli = htmlspecialchars($this->request->getVar('page_pembeli')) ? htmlspecialchars($this->request->getVar('page_pembeli')) : 1;
 
         $keyword_kasir = htmlspecialchars($this->request->getVar('keyword_kasir'));
         if ($keyword_kasir) {
@@ -60,6 +61,7 @@ class Admin extends BaseController
 
             'pembeli' => $pembeli,
             'pembeli_pager' => $this->UserModel->pager,
+            'current_page_pembli' => $current_page_pembeli,
             ////////////////////////////////////////////
             'kasir' => $kasir,
             'kasir_pager' => $this->UserModel->pager,
@@ -250,7 +252,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Resrim | Admin',
             'sidebar_banner' => 'Resrim App',
-            'page_name' => 'Dashboard',
+            'page_name' => 'Order',
             'sub_page' => 'index',
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
 
@@ -275,7 +277,7 @@ class Admin extends BaseController
         $data = [
             'title' => 'Resrim | Admin',
             'sidebar_banner' => 'Resrim App',
-            'page_name' => 'Dashboard',
+            'page_name' => 'Profit',
             'sub_page' => 'index',
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
 
@@ -307,5 +309,20 @@ class Admin extends BaseController
         $this->KasirOrderModel->emptyTable('kasir_order');
         session()->setFlashdata('hapus_semua_data_profit', 'Berhasil menghapus semuda data transaksi');
         return redirect()->to(base_url('/profit'));
+    }
+
+
+    public function menu()
+    {
+        $data = [
+            'title' => 'Resrim | Admin',
+            'sidebar_banner' => 'Resrim App',
+            'page_name' => 'Menu',
+            'sub_page' => 'Index',
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+
+            'menu' => $this->MenuModel->findAll()
+        ];
+        return view('admin/menu/index', $data);
     }
 }

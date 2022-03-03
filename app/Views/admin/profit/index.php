@@ -46,17 +46,26 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $p['pemesan']; ?></td>
                                     <td>
-                                        <?= $p['total_harga']; ?>
+                                        Rp. <?= $p['total_harga']; ?>,-
                                     </td>
                                     <td>
                                         <?= date('H:i', $p['waktu_dibuat']); ?> WIB<br>
                                         <small class="badge"><?= date('d/n/Y - H:i', $p['waktu_dibuat']); ?></small>
                                     </td>
                                     <td>
-                                        <?= date('H:i', $p['waktu_bayar']); ?> WIB<br>
-                                        <small class="badge"><?= date('d/n/Y - H:i', $p['waktu_bayar']); ?></small>
+                                        <?php if ($p['waktu_bayar'] === null) : ?>
+                                            -
+                                        <?php else : ?>
+                                            <?= date('H:i', $p['waktu_bayar']); ?> WIB<br>
+                                            <small class="badge"><?= date('d/n/Y - H:i', $p['waktu_bayar']); ?></small>
+                                        <?php endif; ?>
                                     </td>
-                                    <td><?= $p['kasir']; ?></td>
+                                    <td>
+                                        <?php if ($p['kasir'] === null) : ?>
+                                            -
+                                        <?php else : ?>
+                                            <?= $p['kasir']; ?>
+                                        <?php endif; ?>
                                     <td>
                                         <span class="badge <?= ($p['status'] === 'Sudah Bayar') ? 'badge-success' : 'badge-danger'; ?>"><?= $p['status']; ?></span>
                                     </td>
@@ -79,7 +88,7 @@
                                 <form action="<?= base_url('/profit/del_all'); ?>" method="post">
                                     <input type="hidden" name="_method" value="DELETE" />
                                     <?= csrf_field(); ?>
-                                    <button class="btn btn-sm btn-block btn-danger mt-1" onclick="return confirm('yakin mau hapus semua data ?')">Hapus</button>
+                                    <button class="btn btn-sm btn-block btn-danger mt-1" onclick="return confirm('yakin mau hapus semua data ?')">Hapus semua transaksi</button>
                                 </form>
                             </div>
                         </div>

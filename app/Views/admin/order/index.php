@@ -4,9 +4,7 @@
 
 <!-- Main content -->
 <div class="content">
-    <div class="berhasil-hapus-user" data-flashdata="<?= session()->getFlashdata('berhasil_hapus_user'); ?>"></div>
-    <div class="berhasil-update-user" data-flashdata="<?= session()->getFlashdata('edit_berhasil'); ?>"></div>
-    <div class="berhasil-tambah-user" data-flashdata="<?= session()->getFlashdata('berhasil_tambah_user'); ?>"></div>
+    <div class="berhasil-hapus-order" data-flashdata="<?= session()->getFlashdata('berhasil_hapus_data_order'); ?>"></div>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -35,7 +33,7 @@
                                 <th>No. Meja</th>
                                 <th>Pemesan</th>
                                 <th>Makanan</th>
-                                <th>Harga</th>
+                                <th>Total harga</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -49,7 +47,7 @@
                                     </td>
                                     <td><?= $p['nama_makanan']; ?></td>
                                     <td>
-                                        <?= $p['total_harga']; ?>
+                                        Rp. <?= $p['total_harga']; ?>,-
                                     </td>
                                     <td>
                                         <small class="badge <?= ($p['status'] === 'Belum di proses') ? 'badge-warning' : 'badge-info'; ?>"><?= $p['status']; ?></small>

@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 1;
+                            <?php $i = 1 + (5 * ($current_page_pembli - 1));
                             foreach ($pembeli as $p) : ?>
                                 <tr>
                                     <td><?= $i++; ?></td>
@@ -67,6 +67,9 @@
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <div class="ml-3">
+                        <?= $pembeli_pager->links('pembeli', 'user_pager'); ?>
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>
