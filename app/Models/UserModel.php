@@ -8,13 +8,21 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama', 'username', 'email', 'status_akun', 'level', 'ip'];
+    protected $allowedFields = ['nama', 'username', 'email', 'status_akun', 'level', 'ip', 'password', 'status'];
 
     public function search_pembeli($keyword)
     {
         $builder = $this->table('users');
+        $builder->where(['level' => 'pembeli']);
         $builder->like('nama', $keyword);
-        // $builder->orLike('username', $keyword);
+        return $builder;
+    }
+
+    public function search_kasir($keyword)
+    {
+        $builder = $this->table('users');
+        $builder->where(['level' => 'kasir']);
+        $builder->like('nama', $keyword);
         return $builder;
     }
 }

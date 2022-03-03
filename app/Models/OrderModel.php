@@ -77,4 +77,14 @@ class OrderModel extends Model
     {
         return $this->where(['status' => 'Belum bayar'])->findAll();
     }
+
+    public function search_order($k)
+    {
+        $builder = $this->table('order');
+        $builder->like('pemesan', $k);
+        $builder->orLike('nama_makanan', $k);
+        $builder->orLike('no_meja', $k);
+        $builder->orLike('status', $k);
+        return $builder;
+    }
 }

@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="col-md-3 col-sm-6 col-12">
-                <a href="#" style="color: black;" title="Jumlah Order">
+                <a href="<?= base_url('/order'); ?>" style="color: black;" title="Jumlah Order">
                     <div class="info-box shadow">
                         <span class="info-box-icon bg-warning"><i class="fa fa-tasks"></i></span>
 

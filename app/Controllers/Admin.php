@@ -7,6 +7,7 @@ use App\Models\UserModel;
 use App\Models\OrderModel;
 use App\Models\KasirOrderModel;
 use App\Models\MenuModel;
+use \Dompdf\Dompdf;
 
 class Admin extends BaseController
 {
@@ -37,13 +38,19 @@ class Admin extends BaseController
 
     public function member()
     {
-        $keyword = $this->request->getVar('keyword');
+        $keyword = htmlspecialchars($this->request->getVar('keyword'));
         if ($keyword) {
-            $pembeli = $this->UserModel->search_pembeli($keyword)->paginate(5, 'pembeli');
+            $pembeli = $this->UserModel->search_pembeli($keyword)->findAll();
         } else {
-            $pembeli = $this->UserModel->where(['level' => 'pembeli'])->paginate(5, 'pembeli');
+            $pembeli = $this->UserModel->where(['level' => 'pembeli'])->findAll();
         }
-        $current_page = $this->request->getVar('page_pembeli') ? $this->request->getVar('page_pembeli') : 1;
+
+        $keyword_kasir = htmlspecialchars($this->request->getVar('keyword_kasir'));
+        if ($keyword_kasir) {
+            $kasir = $this->UserModel->search_kasir($keyword_kasir)->findAll();
+        } else {
+            $kasir = $this->UserModel->where(['level' => 'kasir'])->findAll();
+        }
         $data = [
             'title' => 'Resrim | Admin',
             'sidebar_banner' => 'Resrim App',
@@ -51,9 +58,11 @@ class Admin extends BaseController
             'sub_page' => 'index',
             'menuSegment' => $this->urlSegment->uri->getSegment(1),
 
-            'current_page' => $current_page,
             'pembeli' => $pembeli,
             'pembeli_pager' => $this->UserModel->pager,
+            ////////////////////////////////////////////
+            'kasir' => $kasir,
+            'kasir_pager' => $this->UserModel->pager,
         ];
         return view('admin/member/index', $data);
     }
@@ -129,11 +138,12 @@ class Admin extends BaseController
             return redirect()->to(base_url('/member/' . $id . '/edit'))->withInput()->with('validation', $validation);
         }
 
-        if ($this->request->getVar('status_akun') === 'Aktif') {
+        if (htmlspecialchars($this->request->getVar('status_akun')) === 'Aktif') {
             $status = 'aktif';
         } else {
             $status = 'non aktif';
         }
+
 
         $data_edit = [
             'nama' => $this->request->getVar('nama'),
@@ -164,7 +174,7 @@ class Admin extends BaseController
     public function send_data_tambah_user()
     {
         $rules = [
-            'nama' => [
+            'nama_pengguna' => [
                 'rules' => 'required|min_length[5]',
                 'errors' => [
                     'required' => 'Nama wajib di isi!',
@@ -186,6 +196,13 @@ class Admin extends BaseController
                     'is_unique' => 'Userneme ini sudah di gunakan!',
                     'min_length' => 'Minimal 5 karakter'
                 ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[5]',
+                'errors' => [
+                    'required' => 'Username wajib di isi!',
+                    'min_length' => 'Minimal 5 karakter'
+                ]
             ]
         ];
 
@@ -198,16 +215,97 @@ class Admin extends BaseController
         } else {
             $status = 'non aktif';
         }
+        if (htmlspecialchars($this->request->getVar('level') === 'Kasir')) {
+            $level = 'kasir';
+        } elseif (htmlentities($this->request->getVar('level') === 'Pembeli')) {
+            $level = 'pembeli';
+        }
         $data = [
-            'nama' => htmlspecialchars($this->request->getVar('nama')),
+            'nama' => htmlspecialchars($this->request->getVar('nama_pengguna')),
             'email' => htmlspecialchars($this->request->getVar('email')),
             'username' => htmlspecialchars($this->request->getVar('username')),
             'status_akun' => $status,
-            'level' => 'pembeli',
+            'level' => $level,
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+            'status' => 'offline',
             'ip' => $_SERVER['REMOTE_ADDR']
         ];
         $this->UserModel->save($data);
-        session()->setFlashdata('berhasil_tambah_user', 'Berhasil menambahkan pembeli');
+        session()->setFlashdata('berhasil_tambah_user', 'Berhasil menambahkan' . $this->request->getVar('level'));
         return redirect()->to(base_url('/member'));
+    }
+
+
+
+
+
+    public function order()
+    {
+        $keyword = htmlspecialchars($this->request->getVar('keyword'));
+        if ($keyword) {
+            $order = $this->OrderModel->search_order($keyword)->paginate(5, 'order');
+        } else {
+            $order = $this->OrderModel->paginate(5, 'order');
+        }
+        $data = [
+            'title' => 'Resrim | Admin',
+            'sidebar_banner' => 'Resrim App',
+            'page_name' => 'Dashboard',
+            'sub_page' => 'index',
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+
+            'order' => $order,
+            'order_pager' => $this->OrderModel->pager
+        ];
+        return view('admin/order/index', $data);
+    }
+
+    public function profit()
+    {
+        // fungsi search
+        $keyword = htmlspecialchars($this->request->getVar('keyword'));
+        if ($keyword) {
+            $profit = $this->KasirOrderModel->search_profit($keyword)->paginate(5, 'profit');
+        } else {
+            $profit = $this->KasirOrderModel->paginate(5, 'profit');
+        }
+        // penghitung halaman untuk pagination
+        $current_page = $this->request->getVar('page_profit') ? $this->request->getVar('page_profit') : 1;
+
+        $data = [
+            'title' => 'Resrim | Admin',
+            'sidebar_banner' => 'Resrim App',
+            'page_name' => 'Dashboard',
+            'sub_page' => 'index',
+            'menuSegment' => $this->urlSegment->uri->getSegment(1),
+
+            'profit' => $profit,
+            'profit_pager' => $this->KasirOrderModel->pager,
+            'current_page' => $current_page,
+            'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga()
+        ];
+        return view('admin/profit/index', $data);
+    }
+
+    public function exportPDF_transaksi()
+    {
+        // dompdf
+        $pdf = new Dompdf();
+        $data = [
+            'order_sudah' => $this->KasirOrderModel->where(['status' => 'Sudah bayar'])->findAll(),
+            'total_pendapatan' => $this->KasirOrderModel->jumlahkan_total_harga(),
+        ];
+        $html = view('pdfhtml/transaksi', $data);
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'landscape');
+        $pdf->render();
+        $pdf->stream('laporan transaksi.pdf', array("Attachment" => 0));
+    }
+
+    public function hapus_semua_data_profit()
+    {
+        $this->KasirOrderModel->emptyTable('kasir_order');
+        session()->setFlashdata('hapus_semua_data_profit', 'Berhasil menghapus semuda data transaksi');
+        return redirect()->to(base_url('/profit'));
     }
 }

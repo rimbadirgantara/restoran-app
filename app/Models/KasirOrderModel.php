@@ -39,4 +39,13 @@ class KasirOrderModel extends Model
         $sql = $builder->selectSum('total_harga');
         return $sql->get();
     }
+
+    public function search_profit($k)
+    {
+        $builder = $this->table('kasir_order');
+        $builder->like('pemesan', $k);
+        $builder->orLike('no_meja', $k);
+        $builder->orLike('status', $k);
+        return $builder;
+    }
 }

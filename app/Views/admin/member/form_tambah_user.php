@@ -16,9 +16,9 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Nama</label>
-                                    <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : '' ?>" name="nama" value="<?= old('nama'); ?>">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_pengguna')) ? 'is-invalid' : '' ?>" name="nama_pengguna" value="<?= old('nama_pengguna'); ?>">
                                     <div class="invalid-feedback">
-                                        <?= $validation->getError('nama'); ?>
+                                        <?= $validation->getError('nama_pengguna'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -31,6 +31,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" name="password" value="<?= old('password'); ?>">
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -40,6 +49,15 @@
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('username'); ?>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <select class="form-control" name="level">
+                                        <option>Kasir</option>
+                                        <option>Pembeli</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col">
